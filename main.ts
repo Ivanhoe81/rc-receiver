@@ -1,5 +1,5 @@
 radio.onReceivedValue(function (name, value) {
-    if (name == "x") {
+    if (name == "y") {
         wuKong.setAllMotor(value, value)
     }
 })
