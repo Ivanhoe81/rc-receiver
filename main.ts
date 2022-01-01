@@ -1,16 +1,32 @@
+function duda () {
+    music.startMelody(music.builtInMelody(Melodies.BaDing), MelodyOptions.Once)
+    strip.showColor(neopixel.colors(NeoPixelColors.Green))
+}
 function tolat3 () {
     music.playTone(988, music.beat(BeatFraction.Half))
     music.rest(music.beat(BeatFraction.Sixteenth))
 }
 function index_bal () {
-    strip.showColor(neopixel.colors(NeoPixelColors.Red))
+    range = strip.range(2, 1)
+    for (let index = 0; index < 4; index++) {
+        range.showColor(neopixel.colors(NeoPixelColors.Yellow))
+        basic.pause(500)
+        range.showColor(neopixel.colors(NeoPixelColors.Black))
+        basic.pause(500)
+    }
 }
 function tolat1 () {
     music.playTone(988, music.beat(BeatFraction.Half))
     music.rest(music.beat(BeatFraction.Whole))
 }
 function index_jobb () {
-    strip.showColor(neopixel.colors(NeoPixelColors.Yellow))
+    range = strip.range(3, 1)
+    for (let index = 0; index < 4; index++) {
+        range.showColor(neopixel.colors(NeoPixelColors.Yellow))
+        basic.pause(500)
+        range.showColor(neopixel.colors(NeoPixelColors.Black))
+        basic.pause(500)
+    }
 }
 function tolat2 () {
     music.playTone(988, music.beat(BeatFraction.Half))
@@ -27,28 +43,24 @@ radio.onReceivedValue(function (name, value) {
     }
     if (name == "duda") {
         if (value == 1) {
-            music.startMelody(music.builtInMelody(Melodies.BaDing), MelodyOptions.Once)
+            duda()
         }
     }
-    if (name == "index_bal") {
+    if (name == "bal") {
         if (value == 1) {
             index_bal()
         }
     }
-    if (name == "index_jobb") {
+    if (name == "jobb") {
         if (value == 1) {
             index_jobb()
-        }
-    }
-    if (name == "index_bal") {
-        if (value == 1) {
-            index_bal()
         }
     }
 })
 let steer = 0
 let m2 = 0
 let m1 = 0
+let range: neopixel.Strip = null
 let strip: neopixel.Strip = null
 radio.setGroup(1)
 let s1c = 1
