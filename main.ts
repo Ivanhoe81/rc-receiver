@@ -1,3 +1,21 @@
+function tolat3 () {
+    music.playTone(988, music.beat(BeatFraction.Half))
+    music.rest(music.beat(BeatFraction.Sixteenth))
+}
+function index_bal () {
+    strip.showColor(neopixel.colors(NeoPixelColors.Red))
+}
+function tolat1 () {
+    music.playTone(988, music.beat(BeatFraction.Half))
+    music.rest(music.beat(BeatFraction.Whole))
+}
+function index_jobb () {
+    strip.showColor(neopixel.colors(NeoPixelColors.Yellow))
+}
+function tolat2 () {
+    music.playTone(988, music.beat(BeatFraction.Half))
+    music.rest(music.beat(BeatFraction.Quarter))
+}
 radio.onReceivedValue(function (name, value) {
     if (name == "y") {
         m1 = value
@@ -12,13 +30,30 @@ radio.onReceivedValue(function (name, value) {
             music.startMelody(music.builtInMelody(Melodies.BaDing), MelodyOptions.Once)
         }
     }
+    if (name == "index_bal") {
+        if (value == 1) {
+            index_bal()
+        }
+    }
+    if (name == "index_jobb") {
+        if (value == 1) {
+            index_jobb()
+        }
+    }
+    if (name == "index_bal") {
+        if (value == 1) {
+            index_bal()
+        }
+    }
 })
 let steer = 0
 let m2 = 0
 let m1 = 0
+let strip: neopixel.Strip = null
 radio.setGroup(1)
 let s1c = 1
 let s2c = 1
+strip = neopixel.create(DigitalPin.P16, 4, NeoPixelMode.RGB)
 basic.forever(function () {
     if (m1 > 1) {
         m1 = m1 * s1c
@@ -35,20 +70,15 @@ basic.forever(function () {
     if (steer >= 205) {
         s2c = Math.map(steer, 205, 245, 1, 0.5)
     }
-})
-basic.forever(function () {
     if (m1 > 5) {
         if (sonarbit.sonarbit_distance(Distance_Unit.Distance_Unit_cm, DigitalPin.P0) <= 40) {
-            music.playTone(988, music.beat(BeatFraction.Half))
-            music.rest(music.beat(BeatFraction.Whole))
+            tolat1()
         }
         if (sonarbit.sonarbit_distance(Distance_Unit.Distance_Unit_cm, DigitalPin.P0) <= 20) {
-            music.playTone(988, music.beat(BeatFraction.Half))
-            music.rest(music.beat(BeatFraction.Quarter))
+            tolat2()
         }
         if (sonarbit.sonarbit_distance(Distance_Unit.Distance_Unit_cm, DigitalPin.P0) <= 10) {
-            music.playTone(988, music.beat(BeatFraction.Half))
-            music.rest(music.beat(BeatFraction.Sixteenth))
+            tolat3()
         }
     }
 })
