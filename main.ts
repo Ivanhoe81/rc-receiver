@@ -1,5 +1,5 @@
 function duda () {
-    music.startMelody(music.builtInMelody(Melodies.BaDing), MelodyOptions.Once)
+    music.startMelody(music.builtInMelody(Melodies.Dadadadum), MelodyOptions.Once)
     strip.showColor(neopixel.colors(NeoPixelColors.Green))
 }
 function tolat3 () {
