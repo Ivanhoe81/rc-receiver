@@ -15,6 +15,14 @@ radio.onReceivedValue(function (name, value) {
             duda()
         }
     }
+    if (name == "x") {
+        servos.P0.run(50)
+    } else {
+        servos.P0.stop()
+    }
+    if (name == "x") {
+        wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S1, value)
+    }
 })
 let steer = 0
 let m2 = 0
